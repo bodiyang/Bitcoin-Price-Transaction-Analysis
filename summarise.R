@@ -3,6 +3,8 @@
 rm(list = ls())
 
 library(tidyverse)
+library(lubridate)
+
 
 all_data_raw = read_csv('./all.csv')
 
@@ -10,10 +12,10 @@ all_data_raw = read_csv('./all.csv')
 all_data <- all_data_raw %>% 
   mutate(
     trans_num = as.numeric(str_extract(Sum,"[0-9]+\\.?[0-9]*")),
-    block_date = as.Date(Time)
-#    block_hour = hour(Time),
-#    block_minute = minute(Time),
-#    block_second = second(Time)
+    block_date = as.Date(Time),
+    block_hour = hour(Time),
+    block_minute = minute(Time),
+    block_second = second(Time)
     ) %>% 
   group_by(Height) %>% 
   mutate(

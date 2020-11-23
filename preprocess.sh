@@ -3,7 +3,7 @@
 # untar your R installation
 tar -xzf R402.tar.gz
 tar -xzf packages_FITSio_tidyverse.tar.gz
-
+tar -xzf packages_lubridate.tar.gz
 
 cat 0*.csv | sed 's/, /; /g' > all.csv
 

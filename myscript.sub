@@ -15,7 +15,7 @@ executable = ./preprocess.sh
 
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
-transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, packages_FITSio_tidyverse.tar.gz, summarise.R, 0-68732.csv
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, packages_FITSio_tidyverse.tar.gz, packages_lubridate.tar.gz, summarise.R, 0-68732.csv
 
 request_cpus = 1
 request_memory = 1GB
