@@ -1,10 +1,8 @@
 # Perform simply summations for BTC data
 
 rm(list = ls())
-
 library(tidyverse)
 library(lubridate)
-
 
 all_data_raw = read_csv('./all.csv')
 
