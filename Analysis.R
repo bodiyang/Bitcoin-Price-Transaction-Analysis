@@ -1,10 +1,8 @@
+rm(list=ls())
+
 #1.
 dat <- read.csv("summarised_data.csv",header = T)
 dat <- dat[order(dat$Time),]
-
-average <- mean(dat$trans_num)
-num_transaction_block <- tapply(dat$trans_per_block,dat$Height,mean)
-num_quantity_block <- tapply(dat$total_btc_per_block,dat$Height,mean)
 
 index_repeated_block<-c()
 for(i in 2:dim(dat)[1]){
@@ -16,7 +14,6 @@ for(i in 2:dim(dat)[1]){
 }
 
 index_repeated_block <- index_repeated_block[-which(index_repeated_block==0|is.na(index_repeated_block))]
-index_repeated_block
 date.dat <- data.frame(block = dat$Height[index_repeated_block], date=dat$block_date[index_repeated_block], hour=dat$block_hour[index_repeated_block], minute=dat$block_minute[index_repeated_block], second=dat$block_second[index_repeated_block])
 
 diff.day<-c()
@@ -90,7 +87,22 @@ for(i in 1:length(diff.day)){
     }}
 }
 
-cbind(diff.day,diff.hour,diff.min,diff.sec)
+
+num_transaction_block <- tapply(dat$trans_per_block,dat$Height,mean)
+average_number_of_transaction <- mean(num_transaction_block)
+average_number_of_transaction
+
+num_quantity_block <- tapply(dat$total_btc_per_block,dat$Height,mean)
+average_number_of_transaction_quantity <- mean(num_quantity_block)
+average_number_of_transaction_quantity
+
+time.diff.dat <- as.data.frame(cbind(diff.day,diff.hour,diff.min,diff.sec))
+all.sec <- time.diff.dat$diff.day*24*60*60+time.diff.dat$diff.hour*60*60+time.diff.dat$diff.min*60+time.diff.dat$diff.sec
+average_time_elasped <- sum(all.sec)/dim(time.diff.dat)[1]
+average_time_elasped
+
+outcome <- as.data.frame(cbind(average_number_of_transaction,average_number_of_transaction_quantity,average_time_elasped))
+
 
 #2.
 v <- tapply(dat$trans_num,dat$Time,sum)
