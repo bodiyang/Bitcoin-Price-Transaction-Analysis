@@ -8,6 +8,8 @@ output = output/myscript-chtc_$(Cluster)_$(Process).out
 
 executable = ./preprocess.sh
 
+arguments = $(csv_file)
+
 # The two arguments below are:
 # - the process number (0 or 1, since I used "queue 2")
 # - an output file name (myscript.R.0.txt or myscript.R.1.txt)
@@ -15,10 +17,10 @@ executable = ./preprocess.sh
 
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
-transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, packages_FITSio_tidyverse.tar.gz, packages_lubridate.tar.gz, summarise.R, 0-68732.csv
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, packages_FITSio_tidyverse.tar.gz, packages_lubridate.tar.gz, summarise.R, bitcoin-transaction-data-from-2009-to-2018.zip, zip_files.txt
 
 request_cpus = 1
-request_memory = 1GB
+request_memory = 2GB
 request_disk = 1MB
 
-queue 1
+queue csv_file from zip_files.txt

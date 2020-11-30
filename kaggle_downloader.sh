@@ -9,18 +9,32 @@
 # The file also assumes you have a directory ./data/ where the csv will be unzipped to
 
 
+# If the code below is throwing an error, you might need to update the urllib3 package, which you can do with the following code: "pip install --user --upgrade urllib3"
 
 
 
 
-~/.local/bin/kaggle datasets download -f 0-68732.csv -d shiheyingzhe/bitcoin-transaction-data-from-2009-to-2018 --unzip
+#rm *.csv.zip
+
+# Make Local directories for kaggle files
+#mkdir ~/.local
+#mkdir ~/.local/bin
+#cp kaggle ~/.local/bin/
+#mkdir ~/.kaggle
+#cp kaggle.json ~/.kaggle/
+
+#mkdir data
+
+#~/.local/bin/kaggle datasets download -f $1 -d shiheyingzhe/bitcoin-transaction-data-from-2009-to-2018 --unzip
+~/.local/bin/kaggle datasets download -d shiheyingzhe/bitcoin-transaction-data-from-2009-to-2018 
 
 
-unzip *.zip -d data/
+
+#unzip -n *.zip -d data/
 
 
 
-rm *68732.csv*
+#rm *68732.csv*
 
 
 
