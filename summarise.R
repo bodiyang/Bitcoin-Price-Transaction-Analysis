@@ -1,8 +1,17 @@
 # Perform simply summations for BTC data
 
 rm(list = ls())
+
 library(tidyverse)
 library(lubridate)
+
+
+
+args = (commandArgs(trailingOnly=TRUE))
+csv_name = as.character(args[1])
+
+csv_save_name = str_replace(csv_name,"-","to")        
+
 
 all_data_raw = read_csv('./all.csv')
 
@@ -29,28 +38,23 @@ all_data <- all_data_raw %>%
   ungroup()
 
 
-time_since_last_block <-  all_data %>% 
-  distinct(Height,.keep_all = T) %>% 
-  select(Height,Time) %>% 
-  arrange(Height) %>% 
-  mutate(
-    time_since_last_block = Time - lag(Time),
-    last_block_sequential = ifelse(lag(Height)==Height-1,1,0)
-  ) %>% 
-  ungroup()
+export_data <- all_data %>%
+	mutate(
+		start_date = min(block_date),
+		end_date = max(block_date),
+		min_block = min(Height),
+		max_block = max(Height),
+		days_in_data = end_date-start_date,
+		total_trans_amt = sum(trans_num),
+		num_trans = n(),
+	) %>%
+	distinct(Height,.keep_all = TRUE) %>%
+	mutate(num_blocks = n())%>%
+	select(num_trans,total_trans_amt,num_blocks,start_date,end_date,min_block,max_block,days_in_data) %>%
+	distinct()
 
 
-
-
-
-
-
-export_data <- all_data %>% 
-  left_join(time_since_last_block %>% select(Height,time_since_last_block,last_block_sequential))
-
-
-
-write_csv(export_data,"./summarised_data.csv")
+write_csv(export_data,paste0("./summarised_data_",csv_save_name))
 
 
 
