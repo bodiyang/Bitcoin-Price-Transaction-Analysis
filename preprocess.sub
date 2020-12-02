@@ -21,8 +21,8 @@ transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, packag
 
 
 request_cpus = 1
-request_memory = 4GB
-request_disk = 10MB
+request_memory = 5GB
+request_disk = 100MB
 Requirements = (Target.HasCHTCStaging == true)
 
 
