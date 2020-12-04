@@ -38,6 +38,10 @@ all_data <- all_data_raw %>%
   ungroup()
 
 
+per_day <- all_data %>%
+distinct(block_date, .keep_all = TRUE)
+
+
 export_data <- all_data %>%
 	mutate(
 		start_date = min(block_date),
@@ -55,6 +59,6 @@ export_data <- all_data %>%
 
 
 write_csv(export_data,paste0("./summarised_data_",csv_save_name))
-
+write_csv(per_day, paste0("./per_day_",csv_save_name))
 
 
