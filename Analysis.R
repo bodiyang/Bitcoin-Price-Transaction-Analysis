@@ -119,3 +119,29 @@ I <- c(Q1-1.5*IQR,Q3+1.5*IQR)
 index_steeps <- which(diff.v<I[1]|diff.v>I[2])
 index_steeps
 plot(v,type="l",xlab="time",ylab="amount of transacted bitcoin",main="")
+
+
+#3
+
+#reade and change the time format of price data
+price_dat <- read.csv("Bitcoin Historical Data - Investing.com.csv", header = FALSE)
+temp_price <- price_dat[-c(1),]
+price_temp <- data.frame(date_temp=temp_price$V1, price=temp_price$V2)
+price_temp$newdate <- strptime(as.character(price_temp$date_temp), "%Y-%m-%d")
+price_temp$date<- format(price_temp$newdate, "%m/%d/%Y")
+
+#neat price data contain two column: date and price, ex. date format is "08/10/2019"
+price <- data.frame(date=price_temp$date, price=price_temp$price)
+
+#change the time format of trancation data 
+date_transnum <- unique(data.frame(date=dat$block_date, num_transaction=dat$trans_per_day))
+date_transnum$newdate <- strptime(as.character(date_transnum$date), "%m/%d/%Y")
+date_transnum$ndate<- format(date_transnum$newdate, "%m/%d/%Y")
+
+#neat trancation data contain two column: date and total transaction number per day
+transnum <- data.frame(date=date_transnum$ndate, num_transaction=date_transnum$num_transaction)
+
+#merged data, containing price and transaction per day
+trans_price <- merge(price, transnum, by.x = "date", by.y = "date", all = TRUE)
+
+
