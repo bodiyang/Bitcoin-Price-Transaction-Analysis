@@ -27,3 +27,7 @@ model=lm(formula = as.numeric(total_btc_per_day) ~ as.numeric(price), data = tra
 summary(model)
 anova(model)
 
+#get the p-value
+p_value = cor.test(as.numeric(trans_price$total_btc_per_day),as.numeric(trans_price$price))$p.value
+
+#What to do: write the output whcih we may need
