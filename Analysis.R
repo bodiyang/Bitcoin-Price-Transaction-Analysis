@@ -133,18 +133,26 @@ price_temp$newdate <- strptime(as.character(price_temp$date_temp), "%Y-%m-%d")
 price_temp$date<- format(price_temp$newdate, "%m/%d/%Y")
 
 #neat price data contain two column: date and price, ex. date format is "08/10/2019"
-price <- data.frame(date=price_temp$date, price=price_temp$price)
+price <- data.frame(date=price_temp$date_temp, price=price_temp$price)
 
 #change the time format of trancation data 
-date_transnum <- unique(data.frame(date=dat$block_date, num_transaction=dat$trans_per_day))
-date_transnum$newdate <- strptime(as.character(date_transnum$date), "%m/%d/%Y")
-date_transnum$ndate<- format(date_transnum$newdate, "%m/%d/%Y")
+#date_transnum <- unique(data.frame(date=dat$block_date, num_transaction=dat$trans_per_day))
+#date_transnum$newdate <- strptime(as.character(date_transnum$date), "%m/%d/%Y")
+#date_transnum$ndate<- format(date_transnum$newdate, "%m/%d/%Y")
 
 #neat trancation data contain two column: date and total transaction number per day
-transnum <- data.frame(date=date_transnum$ndate, num_transaction=date_transnum$num_transaction)
+#transnum <- data.frame(date=date_transnum$ndate, num_transaction=date_transnum$num_transaction)
 
 #merged data, containing price and transaction per day
-trans_price <- merge(price, transnum, by.x = "date", by.y = "date", all = TRUE, na.rm = TRUE)
+#trans_price <- merge(price, transnum, by.x = "date", by.y = "date", all = TRUE, na.rm = TRUE)
 
 
+
+#updated transaction data
+read_trdata <- read.csv("per_day_300001to310000.csv", header = FALSE)
+temp_trans_data <- data.frame(date=read_trdata$V7, total_btc_per_day=read_trdata$V14)
+trans_data <- temp_trans_data[-c(1),]
+
+trans_price_raw <- merge(price, trans_data, by.x = "date", by.y = "date", all = TRUE, na.rm = TRUE)
+trans_price <- na.omit(trans_price_raw)
 
