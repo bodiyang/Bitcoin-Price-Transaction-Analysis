@@ -1,5 +1,7 @@
 rm(list=ls())
 
+library(tidyr)
+
 #1.
 dat <- read.csv("summarised_data.csv",header = T)
 dat <- dat[order(dat$Time),]
@@ -142,6 +144,7 @@ date_transnum$ndate<- format(date_transnum$newdate, "%m/%d/%Y")
 transnum <- data.frame(date=date_transnum$ndate, num_transaction=date_transnum$num_transaction)
 
 #merged data, containing price and transaction per day
-trans_price <- merge(price, transnum, by.x = "date", by.y = "date", all = TRUE)
+trans_price <- merge(price, transnum, by.x = "date", by.y = "date", all = TRUE, na.rm = TRUE)
+
 
 
