@@ -17,7 +17,7 @@ arguments = $(csv_file)
 
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
-transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, packages_FITSio_tidyverse.tar.gz, packages_lubridate.tar.gz, summarise.R, zip_files.txt, head_zip_files.txt
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, packages_FITSio_tidyverse.tar.gz, packages_lubridate.tar.gz, summarise.R, zip_files.txt
 
 
 request_cpus = 1
