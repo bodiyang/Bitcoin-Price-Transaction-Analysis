@@ -2,8 +2,6 @@
 
 rm(list=ls())
 
-library(tidyr)
-
 #read and clean price data: price
 price_dat <- read.csv("Bitcoin Historical Data - Investing.com.csv", header = FALSE)
 temp_price <- price_dat[-c(1),]
@@ -27,7 +25,10 @@ model=lm(formula = as.numeric(total_btc_per_day) ~ as.numeric(price), data = tra
 summary(model)
 anova(model)
 
-#get the p-value
-p_value = cor.test(as.numeric(trans_price$total_btc_per_day),as.numeric(trans_price$price))$p.value
+
+output <- data.frame(index="300001to310000", p_value=anova(model)$Pr[1], Residuals_Sum_Sq=anova(model)$Sum[2], F_value=anova(model)$F[1])
 
 #What to do: write the output whcih we may need
+write.csv(output, "output_perday_300001to310000.csv")
+
+
