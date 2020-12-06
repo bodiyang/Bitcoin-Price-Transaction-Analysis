@@ -21,8 +21,10 @@ export R_OUTPUT=$PWD/r_output
 #echo "job succesfule" > job$1.txt
 
 Rscript summarise.R $1
+Rscript Regression.R $1
+
 
 rm *-*.csv
 #rm *.zip
 rm all.csv
-
+rm per_day_*
