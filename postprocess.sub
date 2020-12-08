@@ -16,7 +16,7 @@ executable = ./postprocess.sh
 
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
-transfer_input_files = postprocess.R, packages_FITSio_tidyverse.tar.gz, packages_lubridate.tar.gz, http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, all_summarised_data.csv
+transfer_input_files = postprocess.R, packages_FITSio_tidyverse.tar.gz, packages_lubridate.tar.gz, http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, all_summarised_data.csv, all_per_day_data.csv, bitcoin_price_data.csv
 request_cpus = 1
 request_memory = 1GB
 request_disk = 10MB

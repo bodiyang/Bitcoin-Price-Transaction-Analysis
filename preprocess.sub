@@ -17,13 +17,13 @@ arguments = $(csv_file)
 
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
-transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, packages_FITSio_tidyverse.tar.gz, packages_lubridate.tar.gz, summarise.R, zip_files.txt
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, packages_FITSio_tidyverse.tar.gz, packages_lubridate.tar.gz, summarise.R, zip_files.txt,bitcoin_price_data.csv, Regression.R,temp_files.txt
 
 
 request_cpus = 1
 request_memory = 5GB
-request_disk = 100MB
+request_disk = 200MB
 Requirements = (Target.HasCHTCStaging == true)
 
-
+#queue csv_file from temp_files.txt
 queue csv_file from zip_files.txt

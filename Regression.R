@@ -40,9 +40,16 @@ trans_price <- na.omit(trans_price_raw)
 #scatter.smooth(x=trans_price$price, y=trans_price$total_btc_per_day, main="Price ~ Transaction number")
 
 
+temp <- trans_price %>%
+	mutate(
+	num_btc = as.numeric(total_btc_per_day),
+	num_price = as.numeric(gsub(",","",price))
+	)
+
+
 #write.csv(trans_price,paste0("transprice_",numbers,".csv"))
 #linear regression
-model=lm(formula = as.numeric(total_btc_per_day) ~ as.numeric(price), data = trans_price)
+model=lm(formula = num_btc ~ num_price, data = temp)
 summary(model)
 anova(model)
 

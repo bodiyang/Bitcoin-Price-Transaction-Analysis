@@ -43,6 +43,7 @@ distinct(block_date, .keep_all = TRUE)
 
 
 export_data <- all_data %>%
+	filter(trans_per_day>100) %>%
 	mutate(
 		start_date = min(block_date),
 		end_date = max(block_date),
@@ -51,10 +52,11 @@ export_data <- all_data %>%
 		days_in_data = end_date-start_date,
 		total_trans_amt = sum(trans_num),
 		num_trans = n(),
+		csv_file = csv_save_name
 	) %>%
 	distinct(Height,.keep_all = TRUE) %>%
 	mutate(num_blocks = n())%>%
-	select(num_trans,total_trans_amt,num_blocks,start_date,end_date,min_block,max_block,days_in_data) %>%
+	select(csv_file,num_trans,total_trans_amt,num_blocks,start_date,end_date,min_block,max_block,days_in_data) %>%
 	distinct()
 
 

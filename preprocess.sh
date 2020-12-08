@@ -27,4 +27,4 @@ Rscript Regression.R $1
 rm *-*.csv
 #rm *.zip
 rm all.csv
-rm per_day_*
+#rm per_day_*
