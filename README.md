@@ -10,7 +10,7 @@ Bitcoin daily price: Bitcoin Historical Data - Investing.com.csv
 ## code:
 data cleaning: Analysis.R
 Regression model: Regression. R
-HTC cluster computing -- 
+HTC cluster computing -- preprocess.R,  postprocess.R
 
 
 
