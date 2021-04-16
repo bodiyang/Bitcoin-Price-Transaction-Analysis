@@ -9,6 +9,7 @@ Bitcoin daily price: Bitcoin Historical Data - Investing.com.csv
 
 ## Main code:
 data cleaning: Analysis.R, Summerise.R
+
 Regression model: Regression. R
 
 HTC cluster computing: Run "condor_submit_dag process.dag" to cause all the code specified in the following Directed Acyclic Graph (DAG), below, to run:
@@ -16,20 +17,14 @@ HTC cluster computing: Run "condor_submit_dag process.dag" to cause all the code
               
 ###  (job 1)  preprocess.sub
             / | \
-### 22 parallel runs of preprocess.sh   
-            
+### 22 parallel runs of preprocess.sh               
             \ | /
-              V
-              
-### (post 1) combine_summary.sh
-              
+              V            
+### (post 1) combine_summary.sh            
               |
-              V
-              
-### (job 2)  postprocess.sub
-            
-            / | \
-            
+              V              
+### (job 2)  postprocess.sub          
+            / | \           
 ###   1 run of postprocess.sh
 
 
