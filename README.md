@@ -18,4 +18,4 @@ please refer to to process.dag for DAG graph
               
               
 
-Please refer to this file as the final report: STAT 605 First Draft.pdf
+## Report draft: STAT 605 First Draft.pdf
