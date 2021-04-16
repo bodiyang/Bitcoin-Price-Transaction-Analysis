@@ -1,6 +1,6 @@
 # Statistic605-Project
 
-## data sourse:
+## data sourse (sample data from large bitcoin history transaction data sourse):
 raw data of Bitcoin transaction: 0-68732.csv
 
 Cleaned data of Bitcoin transation: dat1.csv
