@@ -15,9 +15,7 @@ HTC cluster computing: Run "condor_submit_dag process.dag" to cause all the code
               
               
 ###  (job 1)  preprocess.sub
-          
             / | \
- 
 ### 22 parallel runs of preprocess.sh   
             
             \ | /
