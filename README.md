@@ -14,27 +14,27 @@ Regression model: Regression. R
 HTC cluster computing: Run "condor_submit_dag process.dag" to cause all the code specified in the following Directed Acyclic Graph (DAG), below, to run:
               
               
-  (job 1)  preprocess.sub
+###  (job 1)  preprocess.sub
           
             / | \
  
-22 parallel runs of preprocess.sh   
+### 22 parallel runs of preprocess.sh   
             
             \ | /
               V
               
- (post 1) combine_summary.sh
+### (post 1) combine_summary.sh
               
               |
               V
               
- (job 2)  postprocess.sub
+### (job 2)  postprocess.sub
             
             / | \
             
-   1 run of postprocess.sh
+###   1 run of postprocess.sh
 
-##
+
 
  Note that "job 1" and "job 2" are each HTCondor job submission
  scripts that will create several distributed jobs that run in
