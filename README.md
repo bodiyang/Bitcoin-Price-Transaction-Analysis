@@ -23,7 +23,6 @@ HTC cluster computing
    
             \ | /
               V
-              
  (post 1) combine_summary.sh
  
               |
