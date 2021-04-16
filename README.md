@@ -22,7 +22,6 @@ HTC cluster computing
    22 parallel runs of preprocess.sh
    
             \ | /
-            
               V
               
  (post 1) combine_summary.sh
