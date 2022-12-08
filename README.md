@@ -1,4 +1,4 @@
-# Statistic605-Project
+# Bitcoin Price Transaction Analysis
 
 ## data sourse (sample data from large bitcoin history transaction data sourse):
 raw data of Bitcoin transaction: 0-68732.csv
