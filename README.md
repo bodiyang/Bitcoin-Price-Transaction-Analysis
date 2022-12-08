@@ -7,7 +7,7 @@ Cleaned data of Bitcoin transation: dat1.csv
 
 Bitcoin daily price: Bitcoin Historical Data - Investing.com.csv
 
-## Main code:
+## Code:
 data cleaning: Analysis.R, Summerise.R
 
 Regression model: Regression. R
